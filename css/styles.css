@@ -5,6 +5,7 @@
   --accent-color: #2196F3;
   --address-text-color:rgba(255, 255, 255, 0.6);
   --logo-color: #000000;
+  --overlay-color:rgba(47, 48, 58, 0.8);
 
   --primary-bg-color: #F5F5F5;
   --secondary-bg-color: #2F303A;
@@ -95,6 +96,8 @@ img {
   color: var(--primary-test-color);
   padding-top: 32px;
   padding-bottom: 32px;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-link:hover,
 .nav-link:focus,
@@ -109,12 +112,9 @@ img {
 .contact-link {
   display: flex;
   color: var(--secondary-text-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* .contact-wrapper {
-  display:inline-flex;
-  align-items: center;
-  fill: var(--secondary-text-color);
-} */
+
 .contact-icon {
   margin-right: 10px;
   fill: currentColor;
@@ -126,7 +126,18 @@ img {
   text-decoration: none;
 }
 .nav-link.current {
+  position: relative;
   color: var(--accent-color);
+}
+.nav-link.current::after {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  content: "";
+  height: 4px;
+  width: 100%;
+  background-color: var(--accent-color);
+  border-radius: 2px;
 }
 
 /* hero section */
@@ -156,6 +167,7 @@ img {
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   min-width: 216px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   color: var(--white-text-color);
   background-color: var(--accent-color);
@@ -207,6 +219,23 @@ img {
 }
 .activity-item:not(:last-child) {
   margin-right: 30px;
+}
+.activity-item {
+  position: relative;
+}
+.activity-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--overlay-color);
+  color: var(--white-text-color);
+  font-weight: 700;
+  line-height: 1.14;
+  text-transform: uppercase;
 }
 
 /* our team */
